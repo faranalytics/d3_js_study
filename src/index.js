@@ -161,11 +161,13 @@ const data = [{ "source": "Agricultural 'waste'", "target": "Bio-conversion", "v
 
 console.log(data);
 
-d3.select('body').node().appendChild(SankeyChart({ links: data }, {
-    nodeGroup: d => d.id.split(/\W/)[0], // take first word for color
-    nodeAlign: d3Sankey.sankeyJustify, // e.g., d3.sankeyJustify; set by input above
-    linkColor: "source", // e.g., "source" or "target"; set by input above
-    format: (f => d => `${f(d)} TWh`)(d3.format(",.1~f")),
-    width:600,
-    height: 600
-}))
+document.addEventListener('DOMContentLoaded', ()=>{
+    d3.select('body').node().appendChild(SankeyChart({ links: data }, {
+        nodeGroup: d => d.id.split(/\W/)[0], // take first word for color
+        nodeAlign: d3Sankey.sankeyJustify, // e.g., d3.sankeyJustify; set by input above
+        linkColor: "source", // e.g., "source" or "target"; set by input above
+        format: (f => d => `${f(d)} TWh`)(d3.format(",.1~f")),
+        width:600,
+        height: 600
+    }));
+});
